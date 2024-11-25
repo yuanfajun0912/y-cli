@@ -11,4 +11,13 @@ program
     require('../lib/mtest')(message)
   });
 
+program
+  .command('release')
+  .description('更新版本号信息')
+  .argument('<owner>', '仓库所有者，在仓库url上可见，仓库名之前')
+  .argument('<repo>', '仓库名')
+  .action((owner, repo) => {
+    require('../lib/release')(owner, repo)
+  });
+
 program.parse(process.argv);
