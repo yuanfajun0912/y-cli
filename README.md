@@ -8,6 +8,9 @@
 - y release
   更新版本号
 
+- y clone
+  下载代码模版，目前已支持模版：wb-bizApp（biz-app代码模版）
+
 
 ### 本地调试
 npx y

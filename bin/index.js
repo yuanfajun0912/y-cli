@@ -18,4 +18,11 @@ program
     require('../lib/release')()
   });
 
+program
+  .command('clone')
+  .description('下载代码模版')
+  .action((type) => {
+    require('../lib/clone')(type)
+  });
+
 program.parse(process.argv);
