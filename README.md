@@ -11,6 +11,17 @@
 - y clone
   下载代码模版，目前已支持模版：wb-bizApp（biz-app代码模版）
 
+- y space add "xxx"
+  添加git工作区
+  
+- y space list
+  列出所有git工作区
+
+- y space remove "xxx"
+  删除git工作区
+
+
+
 
 ### 本地调试
 npx y

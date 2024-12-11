@@ -42,9 +42,27 @@ function hasUnmergedChanges() {
   }
 }
 
+// 仓库是否存在该分支
+function hasBranch(branchName) {
+  try {
+    const remoteBranches = execSync(`git ls-remote --heads origin ${branchName}`, { stdio: 'pipe' })
+      .toString()
+      .trim();
+    if (remoteBranches !== '') return 'remote'
+    const localBranches = execSync('git branch --list ' + branchName, { stdio: 'pipe' })
+      .toString()
+      .trim();
+    return localBranches !== '' ? 'local' : 'none';
+  } catch (e) {
+    error(`检查是否存在该分支 ${branchName} 失败: ` + e);
+    return 'none';
+  }
+}
+
 module.exports = {
   getCurrentBranch,
   hasStagedChanges,
   hasUnmergedChanges,
   hasChanges,
+  hasBranch
 }
