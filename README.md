@@ -11,6 +11,9 @@
 - y clone
   下载代码模版，目前已支持模版：wb-bizApp（biz-app代码模版）
 
+- y mmaster
+  做合并master之前的准备：生成_bak分支，合并多个commit...
+
 - 【谨慎使用】y space add "xxx"
   添加git工作区
   
