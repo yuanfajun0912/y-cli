@@ -4,11 +4,27 @@ const { Command } = require('commander');
 const program = new Command();
 
 program
+  .option('-v, -V, --version')
+  .description('输出版本号')
+  .action(() => {
+    require('../lib/version')()
+  });
+
+program
   .command('mtest')
   .description('在个人分支上将改动merge进test分支')
   .argument('<message>', 'commit的提交信息')
   .action((message) => {
     require('../lib/mtest')(message)
+  });
+
+program
+  .command('mmaster')
+  .description('生成merge master的链接')
+  .argument('<message>', '最终合并的commit提交信息')
+  .argument('[weeks]', '查询前weeks周的git记录')
+  .action((message) => {
+    require('../lib/mmaster')(message)
   });
 
 program

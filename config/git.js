@@ -59,10 +59,34 @@ function hasBranch(branchName) {
   }
 }
 
+// 获取log信息--单行
+function getLogInfo(sinceWeeks = 2) {
+  try {
+    const logOutput = execSync(`git log --since=${sinceWeeks}.weeks --oneline`, { stdio: 'pipe' }).toString().trim();
+    return logOutput;
+  } catch (e) {
+    error(`获取log信息 ${branchName} 失败: ` + e);
+    return null;
+  }
+}
+
+// 获取diff信息
+function getDiffInfo (sourceBranch, targetBranch) {
+  try {
+    const info = execSync(`git diff --shortstat ${sourceBranch} ${targetBranch}`, { stdio: 'pipe' }).toString().trim();
+    return info;
+  } catch (e) {
+    error(`获取${sourceBranch}和${targetBranch}的diff信息失败: ` + e);
+    return null;
+  }
+}
+
 module.exports = {
   getCurrentBranch,
   hasStagedChanges,
   hasUnmergedChanges,
   hasChanges,
-  hasBranch
+  hasBranch,
+  getLogInfo,
+  getDiffInfo
 }
