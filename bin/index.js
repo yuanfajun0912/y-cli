@@ -28,6 +28,14 @@ program
   });
 
 program
+  .command('p')
+  .description('add、commit、push的快捷操作')
+  .argument('<message>', 'commit的提交信息')
+  .action((message) => {
+    require('../lib/p')(message)
+  });
+
+program
   .command('release')
   .description('更新版本号信息')
   .action(() => {
