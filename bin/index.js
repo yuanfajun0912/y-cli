@@ -49,6 +49,15 @@ program
     require('../lib/clone')(type)
   });
 
+// 添加新命令
+program
+  .command('wi')
+  .description('根据设备类型将图片转换为合适尺寸的高质量PNG格式')
+  .argument('<path>', '需要处理的图片路径')
+  .action((path) => {
+    require('../lib/wi')(path)
+  });
+
 
 // space相关 start
 const spaceCommand = program.command('space')
